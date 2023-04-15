@@ -3,6 +3,7 @@ name = "optitag"
 version = "0.1.0"
 edition = "2021"
 authors = ["Michał Sabiniarz <michal.sabiniarz@gmail.com>"]
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "<placeholder> A simple directory tagger"
+license = "MIT"
 
 [dependencies]
