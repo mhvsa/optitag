@@ -1,9 +1,12 @@
 [package]
 name = "optitag"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Michał Sabiniarz <michal.sabiniarz@gmail.com>"]
-description = "<placeholder> A simple directory tagger"
+description = "A simple command-line tool for tagging files"
 license = "MIT"
 
 [dependencies]
+clap = { version = "4.2.2", features = ["derive"] }
+dirs = "5.0.0"
+sled = "0.34.7"
