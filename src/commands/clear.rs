@@ -3,6 +3,28 @@ use clap::Args;
 use std::io::prelude::*;
 
 #[derive(Args)]
+#[command(
+    name = "clear",
+    about = "Clear the database",
+    long_about = r#"
+Clear the database.
+Example:
+    ## Pupulate the database ##
+    optitag tag /home/user/file.txt tag1 tag2 tag3
+    
+    ## Test that the database is populated ##
+    optitag get /home/user/file.txt
+    tag1 tag2 tag3
+
+    ## Clear the database ##
+    optitag clear
+    Database cleared
+
+    ## Test that the database is empty ##
+    optitag get /home/user/file.txt
+    ## No output ##
+    "#
+)]
 pub struct Clear {}
 
 impl Command for Clear {

@@ -2,6 +2,20 @@ use crate::commands::Command;
 use clap::Args;
 
 #[derive(Args)]
+#[command(
+    name = "tag",
+    about = "Tag a path",
+    long_about = r#"
+Tag a path.
+Example: 
+    ## Tag a path with multiple tags ##
+    optitag tag /home/user/file.txt tag1 tag2 tag3
+
+    ## Get all of the tags for a path ##
+    optitag get /home/user/file.txt
+    tag1 tag2 tag3
+    "#
+)]
 pub struct Tag {
     pub path: std::path::PathBuf,
     pub tags: Vec<String>,

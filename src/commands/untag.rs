@@ -3,6 +3,27 @@ use crate::commands::Command;
 use clap::Args;
 
 #[derive(Args)]
+#[command(
+    name = "untag",
+    about = "Remove tags from a path",
+    long_about = r#"
+Remove tags from a path.
+Example: 
+    ## Tag a path with multiple tags ##
+    optitag tag /home/user/file.txt tag1 tag2 tag3
+
+    ## Get all of the tags for a path ##
+    optitag get /home/user/file.txt
+    tag1 tag2 tag3
+
+    ## Untag a path ##
+    optitag untag /home/user/file.txt tag1 tag2
+
+    ## Test that the tags were removed ##
+    optitag get /home/user/file.txt
+    tag3
+    "#
+)]
 pub struct Untag {
     pub path: std::path::PathBuf,
 }

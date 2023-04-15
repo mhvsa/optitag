@@ -2,6 +2,26 @@ use crate::commands::Command;
 use clap::Args;
 
 #[derive(Args)]
+#[command(
+    name = "query",
+    about = "Get all paths for a tag",
+    long_about = r#"
+Get all paths for a tag.
+Example:
+    ## Tag some paths with ##
+    optitag tag /home/user/file1.txt tag1
+    optitag tag /home/user/file2.txt tag1 tag2
+
+    ## Get all of the paths for a tag ##
+    optitag query tag1
+    /home/user/file1.txt
+    /home/user/file2.txt
+    
+    ## Get all of the paths for multiple tags ##
+    optitag query tag1 tag2
+    /home/user/file2.txt
+    "#
+)]
 pub struct Query {
     pub tags: Vec<String>,
 }
