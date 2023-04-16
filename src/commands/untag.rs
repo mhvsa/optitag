@@ -25,7 +25,19 @@ Example:
     "#
 )]
 pub struct Untag {
+    #[arg(help = "The path to untag")]
     pub path: std::path::PathBuf,
+
+    #[arg(help = "The tags to remove from the path")]
+    pub tags: Vec<String>,
+
+    #[arg(
+        short = 'a',
+        long = "all",
+        default_value_t = false,
+        help = "Remove all tags from the path"
+    )]
+    pub all: bool,
 }
 
 impl Command for Untag {
@@ -33,20 +45,22 @@ impl Command for Untag {
         // First, canonicize the path
         let path = self.path.canonicalize().unwrap();
 
-        // Find all of the tags for the path
-        // Reuse the code from get.rs
-        let get = Get { path: path.clone() };
-        let tags = get.execute(tree).unwrap();
-        let tags = tags.split(" ");
+        let mut tags = self.tags.clone();
+        if self.all {
+            // Get all of the tags for the path
+            let get = Get { path: path.clone() };
+            let all_tags = get.execute(tree).unwrap();
+            tags = all_tags.split(" ").map(|s| s.to_string()).collect();
+        }
 
         // Find all of the paths for the tags
         // Remove the path and update the value
-        for tag in tags {
+        for tag in tags.iter() {
             for result in tree.iter() {
                 let (key, value) = result.unwrap();
                 let key = String::from_utf8(key.to_vec()).unwrap();
                 let value = String::from_utf8(value.to_vec()).unwrap();
-                if key == tag {
+                if key.eq(tag) {
                     let paths = value.split(" ");
                     let mut new_value = String::new();
                     for p in paths {
