@@ -31,7 +31,8 @@ impl Command for Clear {
     // Ask the user if they want to clear the database
     // If yes, clear the database
     fn execute(&self, tree: &sled::Tree) -> Result<String, String> {
-        std::io::stdout()
+        std::io
+            ::stdout()
             .write_all(b"Are you sure you want to clear the database? [y/N] ")
             .unwrap();
         std::io::stdout().flush().unwrap();

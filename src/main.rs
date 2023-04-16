@@ -1,9 +1,9 @@
 mod commands;
-use clap::{Parser, Subcommand};
-use commands::{Clear, Command, Get, Query, Tag, Untag};
+use clap::{ Parser, Subcommand };
+use commands::{ Clear, Command, Get, Query, Tag, Untag };
 
 #[derive(Parser)]
-#[command(author, version, author, about, long_about=None)]
+#[command(author, version, author, about, long_about = None)]
 struct Cli {
     #[command(subcommand)]
     command: Option<Commands>,

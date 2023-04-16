@@ -50,7 +50,10 @@ impl Command for Untag {
             // Get all of the tags for the path
             let get = Get { path: path.clone() };
             let all_tags = get.execute(tree).unwrap();
-            tags = all_tags.split(" ").map(|s| s.to_string()).collect();
+            tags = all_tags
+                .split(" ")
+                .map(|s| s.to_string())
+                .collect();
         }
 
         // Find all of the paths for the tags
