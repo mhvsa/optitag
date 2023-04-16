@@ -17,7 +17,9 @@ Example:
     "#
 )]
 pub struct Tag {
+    #[arg(help = "The path to tag")]
     pub path: std::path::PathBuf,
+    #[arg(help = "The tags to add to the path")]
     pub tags: Vec<String>,
 }
 

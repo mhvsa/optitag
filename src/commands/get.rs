@@ -16,6 +16,7 @@ Example:
     "#
 )]
 pub struct Get {
+    #[arg(help = "The path to get tags for")]
     pub path: std::path::PathBuf,
 }
 

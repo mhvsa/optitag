@@ -23,6 +23,7 @@ Example:
     "#
 )]
 pub struct Query {
+    #[arg(help = "Specify the tags which should be associated with the path")]
     pub tags: Vec<String>,
 }
 
