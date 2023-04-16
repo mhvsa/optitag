@@ -2,10 +2,11 @@
 name = "optitag"
 repository = "https://github.com/mhvsa/optitag"
 readme = "README.md"
-version = "0.2.2"
+version = "0.3.0"
 edition = "2021"
 authors = ["Michał Sabiniarz <michal.sabiniarz@gmail.com>"]
 description = "A simple command-line tool for tagging files"
+categories = ["command-line-utilities", "filesystem"]
 license = "MIT"
 
 [dependencies]
